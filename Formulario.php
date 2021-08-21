@@ -27,11 +27,10 @@
 	<form action="/Formulario1/formularios.php" method="post">
 		<label for="username">Nombre de usuario:</label>
 		<input type="text" id="usuario" name="usuario"><br>
-		<span class="error">* <?php echo $nomErr;?></span>
+
 
 		<label for="mail">Correo electrónico:</label><br>
 		<input type="text" id="mail" name="mail"><br>
-		<span class="error">* <?php echo $corErr;?></span>
 
 		<label for="desplegable">Escoge una opción:</label><br>
 			<select id="desplegable" name="desplegable"><br>
@@ -39,11 +38,9 @@
 				<option value="Feedback">Feedback</option>
 				<option value="Queja">Queja</option>
 				<option value="Otros">Otros</option>
-				<span class="error">* <?php echo $despErr;?></span>
 			</select><br>
 
 		<textarea name="comentario" placeholder="Deja aquí tu comentario" rows="10" cols="35"></textarea><br>
-		<span class="error">* <?php echo $comentErr;?></span>
 
 		<input type="submit" class="botón"><br>
 	</form>
