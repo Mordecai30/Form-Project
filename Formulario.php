@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" href="StyleSheet.css">
+</head>
+
 <title>HTML Tutorial</title>
+<header>
+	<h1>Formulario de ayuda</h1>
+	<p>¿Tienes una duda sobre nuestros servicios?<br>¿Tienes interés en ayudarnos a mejorar nuestros productos?<br>Ponte en contacto con nosotros a través de este formulario y nosotros nos encargamos del resto.
+</header>
 <body>
+	<?
+	//variables formulario
+	$nombre = "";
+	$correo = "";
+	$desplegable= "";
+	$comentario="";
+
+	//variables de error
+	$nomErr = " ";
+	$corErr = " ";
+	$despErr= " ";
+	$comentErr=" ";
+	?>
+
 	<form action="/Formulario1/formularios.php" method="post">
-		<label for="username">Nombre de usuario:</label><br>
+		<label for="username">Nombre de usuario:</label>
 		<input type="text" id="usuario" name="usuario"><br>
+		<span class="error">* <?php echo $nomErr;?></span>
 
 		<label for="mail">Correo electrónico:</label><br>
 		<input type="text" id="mail" name="mail"><br>
+		<span class="error">* <?php echo $corErr;?></span>
 
-		<label for="opciones">Escoge una opción:</label>
-			<select id="opciones" name="opciones">
-				<option value="Duda"></option>
-				<option value="Feedback"></option>
-				<option value="Queja"></option>
-				<option value="Otros"></option>
-			</select>
+		<label for="desplegable">Escoge una opción:</label><br>
+			<select id="desplegable" name="desplegable"><br>
+				<option value="Duda">Duda</option>
+				<option value="Feedback">Feedback</option>
+				<option value="Queja">Queja</option>
+				<option value="Otros">Otros</option>
+				<span class="error">* <?php echo $despErr;?></span>
+			</select><br>
 
-		<textarea name="comentario" rows="10" cols="35"> Deja aquí tu comentario</textarea>
+		<textarea name="comentario" placeholder="Deja aquí tu comentario" rows="10" cols="35"></textarea><br>
+		<span class="error">* <?php echo $comentErr;?></span>
 
-		<input type="submit">
+		<input type="submit" class="botón"><br>
 	</form>
 </body>
 </html>
