@@ -12,16 +12,26 @@
 <body>
 	<?
 	//variables formulario
-	$nombre = "";
-	$correo = "";
-	$desplegable= "";
-	$comentario="";
+	$nombre = check_input($_POST['usuario']);
+	$correo = check_input($_POST['mail']);
+	$desplegable= check_input($_POST['desplegable']);
+	$comentario= check_input($_POST['comentario']);
 
 	//variables de error
 	$nomErr = " ";
 	$corErr = " ";
 	$despErr= " ";
 	$comentErr=" ";
+
+	//checkea formatado del texto introducido
+	function check_input($data, $problem=''){
+		$data = trim($data); //elimina espacios en blanco
+		$data = stripslashes($data); //devuelve string con barras invertidas retiradas. 
+		$data = htmlspecialchars($data);
+		if ($problem && strlen($data)==0){
+			die($problem);
+		}
+		return $data;
 	?>
 
 	<form action="/Formulario1/formularios.php" method="post">
