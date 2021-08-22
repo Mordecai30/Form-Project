@@ -23,6 +23,20 @@ select{
 	padding: 5px;
 }
 
+div.error{
+	padding: 10px;
+	background-color: #CD2836;
+	animation-name:error ;
+	animation-delay: 0s;
+	animation-direction: normal;
+	animation-duration: 500ms;
+}
+
+@keyframes error{
+	0%   { left:0px; top:0px;}
+  100%  { left:200px; top:0px;}
+}
+
 .respuesta{
 	color: #FFFFFF;
 }
