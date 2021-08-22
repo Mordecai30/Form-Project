@@ -11,11 +11,19 @@
 </header>
 <body>
 
-	<form action="<?php echo htmlspecialchars ($_SERVER["PHP_SELF"]);?>" method="post" target="_self" id="formulario">
+	<?php //variables error
+$nombrErr = $corrErr = ""; 
+
+$nombre = $correo = "" ; ?>
+
+	<form action="<?php echo htmlspecialchars ($_SERVER["PHP_SELF"]);?>" method="post">
+
+		<span class="error">* <?php echo $nombrErr;?></span>
 		<label for="username">Nombre de usuario:</label><br>
 		<input type="text" id="usuario" name="usuario"><br>
+		
 
-
+		<span class="error">* <?php echo $nombrErr;?></span>
 		<label for="mail">Correo electrónico:</label><br>
 		<input type="text" id="mail" name="mail"><br>
 
@@ -33,25 +41,39 @@
 		<input type="submit" class="botón"><br>
 	</form>
  <?
-
 	//checkea formatado del texto introducido
 function check_input($data){
 	$data = trim($data); //elimina espacios en blanco
 	$data = stripslashes($data); //devuelve string con barras invertidas retiradas. 
 	$data = htmlspecialchars($data);
-	if(strlen($data)==0){
-		echo '<div class="error">parece que te has dejado algo en blanco</div>' . "<br>";
-	}
 }
+
+
+
+
+//detector de problemas
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST["usuario"])) {
+               //$nombrErr = "El nombre es necesario";
+            	echo "<span style=color:red>el nombre es necesario</span>";
+            }else {
+               $nombre = check_input($_POST["usuario"]);
+            }
+            
+            if (empty($_POST["mail"])) {
+               //$corrErr = "Email is required";
+            	echo "<br> <span style=color:red> el correo es necesario</span>";
+            }else {
+            	if (filter_var($correo, FILTER_VALIDATE_EMAIL)) { 
+               	  echo "El correo no es válido";
+               }
+            }
+
+         }
 	?>
 
 	<?
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	$nombre = check_input($_POST['usuario']);
-	$correo =  check_input($_POST['mail']);
-	$desplegable= check_input($_POST['desplegable']);
-	$comentario= check_input($_POST['comentario']);
-}
 
 //echo "Tu nombre de usuario es " . $nombre . "<br>";
 //echo "Tu correo es " . $correo . "<br>";
